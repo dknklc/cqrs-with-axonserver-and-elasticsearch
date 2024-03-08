@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+axon:
+  axonserver:
+    servers: localhost:8124
+
+elasticsearch:
+  url: localhost:9200
