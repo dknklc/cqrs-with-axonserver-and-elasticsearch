@@ -7,6 +7,6 @@ import lombok.RequiredArgsConstructor;
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class FindProductById {
-    private String id;
+public class FindSuggestedProductsByName {
+    private String name;
 }
