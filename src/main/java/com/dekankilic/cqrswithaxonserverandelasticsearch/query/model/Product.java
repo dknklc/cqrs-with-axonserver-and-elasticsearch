@@ -25,9 +25,9 @@ public class Product {
 
     @Field(name = "name", type = FieldType.Text, analyzer = "custom_index", searchAnalyzer = "customer_search")
     private String name;
-    @Field(name = "name", type = FieldType.Text, analyzer = "custom_index", searchAnalyzer = "customer_search")
+    //@Field(name = "name", type = FieldType.Text, analyzer = "custom_index", searchAnalyzer = "customer_search")
     private String description;
-    @Field(name = "price", type = FieldType.Double)
+    //@Field(name = "price", type = FieldType.Double)
     private BigDecimal price;
     private int stock;
 }

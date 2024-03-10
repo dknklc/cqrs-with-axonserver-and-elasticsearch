@@ -22,9 +22,9 @@ import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-@Service
 @RequiredArgsConstructor
 @Slf4j
+@Service
 public class ProductService {
     private final ProductRepository productRepository;
     private final ElasticsearchClient elasticsearchClient; // tüm sorgularımızı bunun üzerinden yapacağız.
@@ -124,11 +124,11 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    @QueryHandler
+    
+    /*@QueryHandler
     public Set<String> handle(FindSuggestedProductsByName findSuggestedProductsByName){
         var query = ESUtil.buildAutoSuggestQuery(findSuggestedProductsByName.getName());
         log.info("Elasticsearch query {}", query.toString());
-        SearchResponse<Product> response = null;
         try {
             return elasticsearchClient.search(q -> q.index("products").query(query), Product.class)
                     .hits()
@@ -142,5 +142,18 @@ public class ProductService {
             throw new RuntimeException(e);
         }
 
+    }*/
+
+    @QueryHandler
+    public Set<String> handle(FindSuggestedProductsByName findSuggestedProductsByName){
+        List<Product> products = productRepository.customAutocompleteSearch(findSuggestedProductsByName.getName());
+        log.info("Elasticsearch response: {}", products.toString());
+        return products
+                .stream()
+                .map(Product::getName)
+                .collect(Collectors.toSet());
+
     }
+
+
 }

@@ -4,7 +4,7 @@
       "custom_filter": {
         "type": "edge_ngram",
         "min_gram": 1,
-        "max_gram": 20 // Hello World => H, He, Hel, Hell, Hello, el, llo, Hello W, Hello Wo, Hello Wor, Hello Worl, Hello World
+        "max_gram": 20
       }
     },
     "analyzer": {
